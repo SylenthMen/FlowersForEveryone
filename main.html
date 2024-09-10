@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="img/flowers.png" type="image/x-icon" />
+    <title>Flowers</title>
+    <style>
+      #inputForm {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="inputForm">
+      <input type="text" id="nombreInput" placeholder="Nombre" />
+      <input type="text" id="apellidoInput" placeholder="Apellido" />
+      <button onclick="actualizarNombre()">Actualizar Nombre</button>
+    </div>
+    <div class="greetings" id="nombreCompleto"></div>
+    <div class="description">
+      <span>Eres una persona especial para mi 💖😊</span>
+    </div>
+    <div class="button">
+      <button class="botones">
+        <a href="flower.html" style="color: #fff">¡Presiona aqui!</a>
+      </button>
+    </div>
+
+    <script>
+      function actualizarNombre() {
+        const nombre = document.getElementById("nombreInput").value;
+        const apellido = document.getElementById("apellidoInput").value;
+        const nombreCompleto = (nombre + " " + apellido).trim();
+        const greetingsDiv = document.getElementById("nombreCompleto");
+        greetingsDiv.innerHTML = "";
+
+        if (nombreCompleto) {
+          for (let i = 0; i < nombreCompleto.length; i++) {
+            const span = document.createElement("span");
+            span.textContent = nombreCompleto[i];
+            greetingsDiv.appendChild(span);
+          }
+
+          // Ocultar el formulario después de actualizar el nombre
+          document.getElementById("inputForm").style.display = "none";
+        } else {
+          alert("Por favor, ingresa al menos un nombre o apellido.");
+        }
+      }
+    </script>
+  </body>
+</html>
